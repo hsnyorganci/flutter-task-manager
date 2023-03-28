@@ -63,8 +63,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
     DatabaseHelper.instance.deleteTask(widget.task.id);
     Navigator.pop(context);
     widget.updateTaskList();
-    Toast.show("Task Deleted", context,
-        duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+    ToastContext().init(context);
+    Toast.show("Task Deleted",
+        duration: Toast.lengthLong, gravity: Toast.bottom);
   }
 
   _submit() {
@@ -77,15 +78,17 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
         // Insert the task to our user's database
         task.status = 0;
         DatabaseHelper.instance.insertTask(task);
-        Toast.show("New Task Added", context,
-            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+        ToastContext().init(context);
+        Toast.show("New Task Added",
+            duration: Toast.lengthLong, gravity: Toast.bottom);
       } else {
         // Update the task
         task.id = widget.task.id;
         task.status = widget.task.status;
         DatabaseHelper.instance.updateTask(task);
-        Toast.show("Task Updated", context,
-            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+        ToastContext().init(context);
+        Toast.show("Task Updated",
+            duration: Toast.lengthLong, gravity: Toast.bottom);
       }
       Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
       widget.updateTaskList();
@@ -217,7 +220,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                         // ignore: deprecated_member_use
-                        child: FlatButton(
+                        child: TextButton(
                           child: Text(
                             widget.task == null ? 'Add' : 'Update',
                             style: TextStyle(
@@ -237,8 +240,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                                 color: Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
-                        // ignore: deprecated_member_use
-                              child: FlatButton(
+                              // ignore: deprecated_member_use
+                              child: TextButton(
                                 child: Text(
                                   'Delete',
                                   style: TextStyle(

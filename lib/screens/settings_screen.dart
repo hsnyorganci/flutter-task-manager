@@ -11,26 +11,24 @@ class Settings extends StatefulWidget {
 }
 
 showAlertDialog(BuildContext context) async {
-
   // set up the buttons
   // ignore: deprecated_member_use
-  Widget cancelButton = FlatButton(
+  Widget cancelButton = TextButton(
     child: Text("Cancel"),
-    onPressed:  () {Navigator.pop(context);},
+    onPressed: () {
+      Navigator.pop(context);
+    },
   );
   // ignore: deprecated_member_use
-  Widget continueButton = FlatButton(
+  Widget continueButton = TextButton(
     child: Text("OK"),
-    onPressed:  () {
+    onPressed: () {
       DatabaseHelper.instance.deleteAllTask();
-      Toast.show("All data cleared", context,
-        duration: Toast.LENGTH_LONG,
-        gravity: Toast.BOTTOM);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) => HomeScreen()));
-      },
+      ToastContext().init(context);
+      Toast.show("All data cleared",
+          duration: Toast.lengthLong, gravity: Toast.bottom);
+      Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+    },
   );
 
   // set up the AlertDialog
@@ -165,7 +163,8 @@ class _SettingsState extends State<Settings> {
                           color: Colors.brown,
                           backgroundColor: Colors.transparent),
                     ),
-                    onTap: () => launch('https://bornomala-tech.web.app/policies'),
+                    onTap: () =>
+                        launch('https://bornomala-tech.web.app/policies'),
                   ),
                 ),
               ),

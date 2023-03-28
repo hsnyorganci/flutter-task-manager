@@ -63,8 +63,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 onChanged: (value) {
                   task.status = value ? 1 : 0;
                   DatabaseHelper.instance.updateTask(task);
-                  Toast.show("Task Completed", context,
-                      duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                  ToastContext().init(context);
+                  Toast.show("Task Completed",
+                      duration: Toast.lengthLong, gravity: Toast.bottom);
                   _updateTaskList();
                 },
                 activeColor: Theme.of(context).primaryColor,
@@ -112,8 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.grey,
               ),
               onPressed: null),
-          title:
-          Row(
+          title: Row(
             children: [
               Text(
                 "Task",

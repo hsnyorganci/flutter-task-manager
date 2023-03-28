@@ -61,8 +61,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 onPressed: () {
                   task.status = 0;
                   DatabaseHelper.instance.updateTask(task);
-                  Toast.show("Task reassigned", context,
-                      duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                  ToastContext().init(context);
+                  Toast.show("Task reassigned",
+                      duration: Toast.lengthLong, gravity: Toast.bottom);
                   _updateTaskList();
                 },
               ),
