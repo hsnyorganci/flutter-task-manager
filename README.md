@@ -43,6 +43,9 @@ Step-2: Go to project root and execute the following command in console to get t
 - Flutter
 - Dart
 
+## Notes from Hasan
+ This project did not run properly in the original repository. I fixed some issues with Android folder.
+
 ## New to Flutter project!
 
 Follow this -
